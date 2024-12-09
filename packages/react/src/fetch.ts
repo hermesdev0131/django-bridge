@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+export type MessageLevel = "info" | "success" | "warning" | "error";
+
 export interface TextMessage {
-  level: "success" | "warning" | "error";
+  level: MessageLevel;
   text: string;
 }
 
 export interface HTMLMessage {
-  level: "success" | "warning" | "error";
+  level: MessageLevel;
   html: string;
 }
 

@@ -9,15 +9,10 @@ from .adapters.registry import JSContext
 
 
 def get_messages(request):
+    default_level_tag = messages.DEFAULT_TAGS[messages.SUCCESS]
     return [
         {
-            "level": (
-                "error"
-                if message.level == messages.ERROR
-                else "warning"
-                if message.level == messages.WARNING
-                else "success"
-            ),
+            "level": messages.DEFAULT_TAGS.get(message.level, default_level_tag),
             "html": conditional_escape(message.message),
         }
         for message in messages.get_messages(request)
