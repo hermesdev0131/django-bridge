@@ -119,7 +119,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Karl Hobley`,
+      copyright: `Copyright © ${new Date().getFullYear()} Karl Hobley and individual contributors`,
     },
     prism: {
       theme: prismThemes.github,
