@@ -65,6 +65,19 @@ export default function Home(): JSX.Element {
             Build your backend like a regular Django app using Django views,
             forms and URL routing.
           </p>
+          <CodeBlock language="python">{`from django_bridge import Response
+
+def form(request):
+    form = MyForm(request.POST or None)
+
+    if form.is_valid():
+        # Form submission logic here
+
+    return Response(request, "FormView", {
+        "action_url": reverse("form"),
+        "form": form,
+    })
+  `}</CodeBlock>
           <p>
             You can put as much logic as you like into views, as it stays on the
             server it won't add bloat to your application and you also have
@@ -84,19 +97,6 @@ export default function Home(): JSX.Element {
             register <a href="/docs/python2react/">JavaScript adapters</a> to
             convert non-JSON serialisable objects, such as forms.
           </p>
-          <CodeBlock language="python">{`from django_bridge import Response
-
-def form(request):
-    form = MyForm(request.POST or None)
-
-    if form.is_valid():
-        # Form submission logic here
-
-    return Response(request, "FormView", {
-        "action_url": reverse("form"),
-        "form": form,
-    })
-  `}</CodeBlock>
         </section>
         <section className={styles.section}>
           <h2>Render the frontend with React</h2>
@@ -104,16 +104,6 @@ def form(request):
             The JSON response from the server is fed into the props of a React
             component to render it.
           </p>
-          <p>
-            <a href="/docs/global_context/">Global context providers</a> can be
-            created to make global data such as URLs, CSRF Tokens or info about
-            the user available as React contexts.
-          </p>
-          <p>
-            It's unopinionated about how you build your frontend, so you can use
-            any React component library or styling framework that you like.
-          </p>
-          <p>Supports Vite.js, and Storybook. Next.js support coming soon!</p>
           <CodeBlock language="jsx">{`function FormView({ action_url, form }) {
     const { csrfToken } = useContext(CSRFTokenContext);
 
@@ -134,6 +124,16 @@ def form(request):
       </Layout>
     );
   }`}</CodeBlock>
+          <p>
+            <a href="/docs/global_context/">Global context providers</a> can be
+            created to make global data such as URLs, CSRF Tokens or info about
+            the user available as React contexts.
+          </p>
+          <p>
+            It's unopinionated about how you build your frontend, so you can use
+            any React component library or styling framework that you like.
+          </p>
+          <p>Supports Vite.js, and Storybook. Next.js support coming soon!</p>
         </section>
       </main>
     </Layout>
