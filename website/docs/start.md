@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Trying it out
 
-Have a look at our [demo project](https://demo.django-render.org) to get an idea of how Django Bridge works.
+Have a look at our [demo project](https://demo.django-bridge.org) to get an idea of how Django Bridge works.
 
 You can find the source code to this demo on GitHub: [https://github.com/django-bridge/django-react-cms](https://github.com/django-bridge/django-react-cms).
 It’s permissively licensed so you can copy it to get started.
