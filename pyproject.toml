@@ -12,6 +12,7 @@ python = "^3.11"
 twine = "^4.0.2"
 wheel = "^0.42.0"
 ruff = "^0.4.2"
+setuptools = "^75.8.0"
 
 [build-system]
 requires = ["poetry-core"]
