@@ -38,3 +38,26 @@ Let’s step through this code one line at a time:
 All Django projects contain a URL configuration file (usually called ``urls.py``in the project folder) that defines what views to run at what URLs. There are no differences in how the URL dispatcher works in a Django Bridge application, and you can even mix React-rendered views with template-rendered views.
 
 See Django's [URL dispatcher](https://docs.djangoproject.com/en/5.0/topics/http/urls/) documentation for instructions on how to add views to your URL configuration.
+
+## Class based views
+
+Django Bridge provides ``DjangoBridgeView`` class that can be subclassed to define class based views
+and also ``DjangoBridgeMixin`` which can be used to convert existing class based views to render with Django bridge.
+
+[[source]](https://github.com/django-bridge/django-bridge/blob/main/python/django_bridge/views.py)
+
+As a simple example, here's the view above written as a class based view:
+
+```python
+import datetime
+from django_bridge.views import DjangoRenderView
+
+
+class CurrentDateTime(DjangoRenderView):
+    view_name = "CurrentTime"
+
+    def get_context_data(self):
+        return {
+            "time": datetime.datetime.now()
+        }
+```
