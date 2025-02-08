@@ -43,7 +43,7 @@ class TestCase(DjangoTestCase):
     def assertRedirects(self, response, expected_url, *args, **kwargs):
         if response.request.get("HTTP_X_REQUESTED_WITH") == "DjangoBridge":
             self.assertEqual(response.status_code, 200)
-            self.assertEqual(response.status, "redirect")
+            self.assertEqual(response.action, "redirect")
             self.assertEqual(response.path, expected_url)
         else:
             return super().assertRedirects(response, expected_url, *args, **kwargs)
