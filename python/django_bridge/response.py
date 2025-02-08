@@ -86,7 +86,7 @@ class Response(BaseResponse):
                 "CONTEXT_PROVIDERS", {}
             ).items()
         }
-        self.messages = (get_messages(request),)
+        self.messages = get_messages(request)
         super().__init__(
             {
                 "view": self.view,
@@ -127,7 +127,7 @@ class CloseOverlayResponse(BaseResponse):
     action = "close-overlay"
 
     def __init__(self, request):
-        self.messages = (get_messages(request),)
+        self.messages = get_messages(request)
         super().__init__(
             {
                 "messages": self.messages,
