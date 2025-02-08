@@ -1,8 +1,6 @@
 from django.test import Client as DjangoClient
+from django.test.client import MULTIPART_CONTENT
 from django.test import TestCase as DjangoTestCase
-
-BOUNDARY = "BoUnDaRyStRiNg"
-MULTIPART_CONTENT = "multipart/form-data; boundary=%s" % BOUNDARY
 
 
 class Client(DjangoClient):
