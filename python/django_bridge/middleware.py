@@ -7,7 +7,7 @@ from django.http import StreamingHttpResponse
 from django.shortcuts import render
 from django.templatetags.static import static
 
-from .response import BaseResponse, RedirectResponse, ReloadResponse
+from .response import BaseResponse, RedirectResponse
 
 
 class DjangoBridgeMiddleware:
@@ -26,15 +26,12 @@ class DjangoBridgeMiddleware:
         # If the request was made by Django Bridge
         # (using `fetch()`, rather than a regular browser request)
         if request.META.get("HTTP_X_REQUESTED_WITH") == "DjangoBridge":
-            if isinstance(response, BaseResponse):
-                return response
-
-            elif response.status_code == 302:
+            # Convert redirect responses to a JSON response with a `redirect` status
+            # This allows the client code to handle the redirect
+            if response.status_code == 302:
                 return RedirectResponse(response["Location"])
 
-            else:
-                # Response couldn't be converted into a Django Bridge response. Reload the page
-                return ReloadResponse()
+            return response
 
         # Regular browser request
         # If the response is a Django Bridge response, wrap it in our bootstrap template
