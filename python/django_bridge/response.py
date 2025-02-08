@@ -107,6 +107,9 @@ class ReloadResponse(BaseResponse):
 
     action = "reload"
 
+    def __init__(self):
+        super().__init__({})
+
 
 class RedirectResponse(BaseResponse):
     action = "redirect"
