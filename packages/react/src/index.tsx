@@ -26,16 +26,16 @@ export function App({ config, initialResponse }: AppProps): ReactElement {
   // Toast messages state
   const [messages, dispatchMessages] = React.useReducer(
     (
-      messages: Message[],
+      state: Message[],
       action: { action: "push"; message: Message } | { action: "clear" }
     ) => {
       switch (action.action) {
         case "push":
-          return messages.concat([action.message]);
+          return state.concat([action.message]);
         case "clear":
           return [];
         default:
-          return messages;
+          return state;
       }
     },
     []
