@@ -2,6 +2,8 @@ from datetime import date, datetime, time
 
 from django import forms
 
+from django.core.files import File
+
 from .registry import Adapter, register, registry
 
 
@@ -32,6 +34,10 @@ class FieldAdapter(Adapter):
 
         if isinstance(value, (datetime, date, time)):
             value = value.isoformat()
+
+        # Pack any file simply as a string that contains its path
+        if isinstance(value, File):
+            value = str(value)
 
         return (
             "forms.Field",
